@@ -91,6 +91,11 @@ imap <F2> <ESC>:w<CR>
 " toggle the NERDTree window pane
 nmap <F3> :NERDTreeToggle<CR>
 
+" clear the search string
+nmap <F11> :let @/=""<CR>
+" exit insert mode and clear the search string
+imap <F11> <ESC>:let @/=""<CR>
+
 """""""""""""""""
 " Auto Commands "
 """""""""""""""""
