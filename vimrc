@@ -58,6 +58,7 @@ set matchpairs+=<:>         " show matches for angle brackets
 set incsearch               " turn on incremental searches
 set ignorecase              " ignore case when searching
 set smartcase               " when searching be smart about cases
+set hlsearch                " highlight all of the search matches
 
 set autoread                " auto updates a file if changed
 
