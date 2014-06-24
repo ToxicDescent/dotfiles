@@ -4,7 +4,6 @@
 # Variables
 ##################################################
 
-dir=pwd
 home=~
 files="vimrc ycm_extra_conf.py"
 
@@ -14,6 +13,7 @@ files="vimrc ycm_extra_conf.py"
 # create a symlink to the dotfiles in the home directory
 for file in $files;
 do
+    rm $home/.$file
     echo "Creating a symlink to $file in the home directory."
     ln -s $file $home/.$file
 done
@@ -36,6 +36,6 @@ vim +PluginInstall +qall
 # compile YouCompleteMe with the C-family language support
 cd $home/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
-cd dir
+cd -
 
 ##################################################
