@@ -1,27 +1,41 @@
-# create the backup directory
-mkdir ~/dotfile_backups
+#!/bin/bash
 
-# backup all of the vim files and folders
-mv ~/.vim ~/dotfile_backups
-mv ~/.vimrc ~/dotfile_backups
-mv ~/.ycm_extra_conf.py ~dotfile_backups
+##################################################
+# Variables
+##################################################
+
+dir=pwd
+home=~
+files="vimrc ycm_extra_conf.py"
+
+##################################################
+
+
+# create a symlink to the dotfiles in the home directory
+for file in $files;
+do
+    echo "Creating a symlink to $file in the home directory."
+    ln -s $file $home/.$file
+done
+
+
+##################################################
+# Vim Setup
+##################################################
 
 # create the vim folder structure
-cp .vim/ ~/
-mkdir ~/.vim/backup
-mkdir ~/.vim/swap
-mkdir ~/.vim/undo
+mkdir $home/.vim
+mkdir $home/.vim/{backup,bundle,swap,undo}
 
-# copy the .vimrc to the home directory
-cp .vimrc ~/
+# setup vundle
+git clone https://github.com/gmarik/Vundle.vim.git $home/.vim/bundle/Vundle.vim
 
-# install the vim plugins
+# install the vundle plugins
 vim +PluginInstall +qall
 
 # compile YouCompleteMe with the C-family language support
-cd ~/.vim/bundle/YouCompleteMe
+cd $home/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
-cd -
+cd dir
 
-# copy the ycm_extra_conf file to the home directory
-cp .ycm_extra_conf.py ~/
+##################################################
