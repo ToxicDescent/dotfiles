@@ -22,7 +22,7 @@ done
 # Vim Setup
 ##################################################
 
-read -r -p "Do you whish to setup vim? [y/N]: " response
+read -r -p "Do you wish to setup vim? [y/N]: " response
 
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
