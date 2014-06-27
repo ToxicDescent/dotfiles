@@ -4,18 +4,17 @@
 # Variables
 ##################################################
 
-home=~
+directory=~
 files="vimrc ycm_extra_conf.py"
 
 ##################################################
 
 
-# create a symlink to the dotfiles in the home directory
-for file in $files;
+# copy the dotfiles into $directory
+for file in $files
 do
-    rm $home/.$file
-    echo "Creating a symlink to $file in the home directory."
-    ln -s $file $home/.$file
+    echo "Copying $file into $directory."
+    cp $file $directory/.$file
 done
 
 
@@ -23,19 +22,24 @@ done
 # Vim Setup
 ##################################################
 
-# create the vim folder structure
-mkdir $home/.vim
-mkdir $home/.vim/{backup,bundle,swap,undo}
+read -r -p "Do you whish to setup vim? [y/N]: " response
 
-# setup vundle
-git clone https://github.com/gmarik/Vundle.vim.git $home/.vim/bundle/Vundle.vim
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    # create the vim folder structure
+    mkdir $directory/.vim
+    mkdir $directory/.vim/{backup,bundle,swap,undo}
 
-# install the vundle plugins
-vim +PluginInstall +qall
+    # setup vundle
+    git clone https://github.com/gmarik/Vundle.vim.git $directory/.vim/bundle/Vundle.vim
 
-# compile YouCompleteMe with the C-family language support
-cd $home/.vim/bundle/YouCompleteMe
-./install.sh --clang-completer
-cd -
+    # install the vundle plugins
+    vim +PluginInstall +qall
+
+    # compile YouCompleteMe with the C-family language support
+    cd $directory/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
+    cd -
+fi
 
 ##################################################
