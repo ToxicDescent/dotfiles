@@ -5,7 +5,7 @@
 ##################################################
 
 directory=~
-files="bashrc bash_profile bash_prompt vimrc ycm_extra_conf.py"
+files="bashrc bash_aliases bash_profile bash_prompt vimrc ycm_extra_conf.py"
 
 ##################################################
 
