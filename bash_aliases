@@ -1,11 +1,18 @@
-# check the current system to set the right colorflag
+# check the current system to set the right colorflag for ls
 if ls --color > /dev/null 2>&1; then # Linux
-    colorflag="--color=auto"
+    alias ls="ls --color=auto"
+    alias ll="ls --color=auto -alF"
 else # OS X
-    colorflag="-G"
+    alias ls="ls -G"
+    alias ll="ls -alFG"
 fi
 
-alias ls="ls ${colorflag}"
-alias ll="ls -alF ${colorflag}"
-
+# add color to grep searches
 alias grep="grep --color=auto"
+
+# moving up directories
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
