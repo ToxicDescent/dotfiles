@@ -1,27 +1,39 @@
+############
+# Settings #
+############
+#
 startup_message off             # turn off the start message
-vbell on
-vbell_msg " Blue. Blue. "
 
-shell bash
-defscrollback 10000
-shelltitle '$ |bash'
-msgwait 5
+vbell off                       # turn off the visual bell
 
-hardstatus on
-hardstatus alwayslastline
+shell bash                      # set the default shell
+
+defscrollback 10000             # set the number of lines to scroll back
+
+shelltitle '$ |bash'            # set the title of the window to the nume of the program running
+
+msgwait 1                       # set the time that a message will be displayed for
+
+select 0                        # select the first screen by default
+
+hardstatus on                   # set the status bar to always be on
+hardstatus alwayslastline       # set the status bar to always be on the last line
+# set the string to be displayed in the status bar
 hardstatus string "%{= kg}[ %{G}%H %{g}] %{=}%-w%{+b w}%n %t%{-b w}%+w %{= kG}%-=%D %m/%d/%y | %C:%s %A | %1`%{-}"
 
-bindkey -k k1 select 0
-bindkey -k k2 select 1
-bindkey -k k3 select 2
-bindkey -k k4 select 3
+############
+# Keybinds #
+############
 
-bindkey -k k5 prev
-bindkey -k k6 next
+bindkey -k k1 select 0          # select screen 1
+bindkey -k k2 select 1          # select screen 2
+bindkey -k k3 select 2          # select screen 3
+bindkey -k k4 select 3          # select screen 4
 
-bindkey -k k7 detach
+bindkey -k k5 prev              # move to the previous screen
+bindkey -k k6 next              # move to the next screen
 
-bindkey -k k8 screen
-bindkey -k k9 kill
+bindkey -k k7 detach            # detach the screen
 
-select 0
+bindkey -k k8 screen            # create a new screen
+bindkey -k k9 kill              # kill the current screen
