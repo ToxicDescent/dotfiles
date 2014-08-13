@@ -16,3 +16,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+# reload the bashrc
+alias reload=". ~/.bashrc"
