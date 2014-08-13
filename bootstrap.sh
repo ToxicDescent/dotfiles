@@ -4,42 +4,47 @@
 # Variables
 ##################################################
 
-directory=~
-files="bashrc bash_aliases bash_profile bash_prompt vimrc ycm_extra_conf.py"
+files="bashrc bash_aliases bash_profile bash_prompt vimrc gvimrc screenrc"
 
 ##################################################
 
-
-# copy the dotfiles into $directory
-for file in $files
-do
-    echo "Copying $file into $directory."
-    cp $file $directory/.$file
-done
-
-
 ##################################################
-# Vim Setup
+# Functions
 ##################################################
-
-read -r -p "Do you wish to setup vim? [y/N]: " response
-
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-then
+function insallvim()
+{
     # create the vim folder structure
-    mkdir $directory/.vim
-    mkdir $directory/.vim/{backup,bundle,swap,undo}
+    mkdir ~/.vim
+    mkdir ~/.vim/{backup,bundle,swap,undo}
+
+    # copy ycm_extras_conf to the home directory
+    cp ycm_extra_conf.py ~/.ycm_extra_conf.py
 
     # setup vundle
-    git clone https://github.com/gmarik/Vundle.vim.git $directory/.vim/bundle/Vundle.vim
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
     # install the vundle plugins
     vim +PluginInstall +qall
 
     # compile YouCompleteMe with the C-family language support
-    cd $directory/.vim/bundle/YouCompleteMe
+    cd ~/.vim/bundle/YouCompleteMe
     ./install.sh --clang-completer
     cd -
+}
+##################################################
+
+# copy the dotfiles into the home directory
+for file in $files
+do
+    echo "Copying $file into the home directory"
+    cp $file ~/.$file
+done
+
+# if the vim flag is on then install the vim plugins
+if [ "$1" == "--vim" -o "$1" == "-v" ]
+then
+    installvim
 fi
 
-##################################################
+unset installvim
+unset files
