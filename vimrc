@@ -25,7 +25,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 set t_Co=256                " use 256 colors
 
-colorscheme kolor           " set the color scheme
+silent! colorscheme kolor           " set the color scheme
 set background=dark         " set the dark theme
 
 syntax on                   " turn on syntax highlighting
