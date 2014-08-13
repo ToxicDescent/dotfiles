@@ -1,0 +1,27 @@
+startup_message off             # turn off the start message
+vbell on
+vbell_msg " Blue. Blue. "
+
+shell bash
+defscrollback 10000
+shelltitle '$ |bash'
+msgwait 5
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{= kg}[ %{G}%H %{g}] %{=}%-w%{+b w}%n %t%{-b w}%+w %{= kG}%-=%D %m/%d/%y | %C:%s %A | %1`%{-}"
+
+bindkey -k k1 select 0
+bindkey -k k2 select 1
+bindkey -k k3 select 2
+bindkey -k k4 select 3
+
+bindkey -k k5 prev
+bindkey -k k6 next
+
+bindkey -k k7 detach
+
+bindkey -k k8 screen
+bindkey -k k9 kill
+
+select 0

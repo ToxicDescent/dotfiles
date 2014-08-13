@@ -4,7 +4,7 @@
 # Variables
 ##################################################
 
-files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc"
+files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc screenrc"
 
 ##################################################
 
