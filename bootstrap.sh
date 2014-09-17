@@ -11,7 +11,7 @@ files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc 
 ##################################################
 # Functions
 ##################################################
-function insallvim()
+function installvim()
 {
     # create the vim folder structure
     mkdir ~/.vim
