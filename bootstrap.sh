@@ -4,7 +4,7 @@
 # Variables
 ##################################################
 
-files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc screenrc"
+files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc screenrc tmux.conf"
 
 ##################################################
 
@@ -15,7 +15,7 @@ function installvim()
 {
     # create the vim folder structure
     mkdir ~/.vim
-    mkdir ~/.vim/{backup,bundle,swap,undo}
+    mkdir ~/.vim/{bundle,undo}
 
     # copy ycm_extras_conf to the home directory
     cp ycm_extra_conf.py ~/.ycm_extra_conf.py
