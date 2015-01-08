@@ -10,7 +10,6 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'zeis/vim-kolor'
 
@@ -25,7 +24,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 set t_Co=256                " use 256 colors
 
-silent! colorscheme kolor           " set the color scheme
+silent! colorscheme kolor   " set the color scheme
 set background=dark         " set the dark theme
 
 syntax on                   " turn on syntax highlighting
@@ -36,17 +35,15 @@ set cmdheight=1             " set the height of the command line
 
 set shortmess=aoOw          " reduces how often you see the 'Hit ENTER to continue' promt
 
-set backup                  " always create backup files
-set backupdir=~/.vim/backup " set the path for backup files
-set swapfile                " always create swap files
-set directory=~/.vim/swap   " set the path for swap files
+set noswapfile
+set nobackup
+set nowb
 
 set undolevels=1000         " the number of changes that can be undone
 set undofile                " always save undo history to a file
 set undodir=~/.vim/undo     " set the path for the undo files
 
 set number                  " show line numbers
-set relativenumber          " show relative line numbers
 
 set ruler                   " show the ruler in the status bar
 
@@ -89,17 +86,6 @@ nmap <F2> :w<CR>
 " exit insert mode and save the current file
 imap <F2> <ESC>:w<CR>
 
-" toggle the NERDTree window pane
-nmap <F3> :NERDTreeToggle<CR>
-
 " clear the search string
-nmap <F11> :let @/=""<CR>
+nmap <F10> :let @/=""<CR>
 " exit insert mode and clear the search string
-imap <F11> <ESC>:let @/=""<CR>
-
-"""""""""""""""""
-" Auto Commands "
-"""""""""""""""""
-
-" if NERDTree is the only window open then quit vim
-autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
