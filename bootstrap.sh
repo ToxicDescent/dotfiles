@@ -4,13 +4,33 @@
 # Variables
 ##################################################
 
-files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc screenrc tmux.conf"
+dot_files="bashrc bash_aliases bash_functions bash_profile bash_prompt vimrc gvimrc tmux.conf"
+
+bin_files="battery"
 
 ##################################################
 
 ##################################################
 # Functions
 ##################################################
+function copydotfiles()
+{
+    for file in $dot_files
+    do
+        cp $file ~/.$file
+    done
+}
+
+function copybinfiles()
+{
+    mkdir -p ~/bin
+
+    for file in $bin_files
+    do
+        cp $file ~/bin/$file
+    done
+}
+
 function installvim()
 {
     # create the vim folder structure
@@ -31,14 +51,14 @@ function installvim()
     ./install.sh --clang-completer
     cd -
 }
+
 ##################################################
 
-# copy the dotfiles into the home directory
-for file in $files
-do
-    echo "Copying $file into the home directory"
-    cp $file ~/.$file
-done
+# copy the dot files to ~/
+copydotfiles
+
+# copy the bin files to ~/bin/
+copybinfiles
 
 # if the vim flag is on then install the vim plugins
 if [ "$1" == "--vim" -o "$1" == "-v" ]
@@ -46,5 +66,6 @@ then
     installvim
 fi
 
+unset copydotfiles
+unset copybinfiles
 unset installvim
-unset files
