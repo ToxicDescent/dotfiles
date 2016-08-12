@@ -12,11 +12,19 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'zeis/vim-kolor'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+""""""""""""""""""""
+" Airline Settings "
+""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1 " display all buffer when one tab is open
+let g:airline_theme='dark'
 
 """""""""""""""""""
 " Editor Settings "
